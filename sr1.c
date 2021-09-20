@@ -1,3 +1,9 @@
+
+// restrict помогает программисту показать компилятору, что по адресу, 
+// на который указывает переменная с данным ключевым словом не будет 
+// никаких других указателей, тогда компилятор сможет скомпилировать 
+// программу эфективнее 
+
 #include <pthread.h>
 #include <stdio.h>
 #include <time.h>
@@ -42,7 +48,8 @@ vector_sum (int *v, int size, int nthreads)
         vector[i].vec_size = size;
     }
     for (i = 0; i < nthreads; ++i){
-        pthread_create(threads + i, NULL, vec_sum, vector + i);
+        int res = pthread_create(threads + i, NULL, vec_sum, vector + i);
+        accert(res == 0);
     }
     void* status;
     for (int i = 0; i < nthreads; ++i) {
