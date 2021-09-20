@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <errno.h>
+#include <accert.h>
 
 int sum = 0;
 pthread_mutex_t g_mutex = PTHREAD_MUTEX_INITIALIZER;
